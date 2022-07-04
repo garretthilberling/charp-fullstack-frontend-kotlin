@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.hilberling.treblleapp.ui.screens.SignUp
 import com.hilberling.treblleapp.ui.theme.TreblleAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,7 +29,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Authentication() {
-
+    SignUp()
 }
 
 @Preview(showBackground = true)
