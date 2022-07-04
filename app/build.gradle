@@ -48,6 +48,17 @@ android {
 }
 
 dependencies {
+
+    // Retrofit library for communicating with the API
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    // Moshi converter to turn JSON response from the API to Kotlin object and vice verse
+    implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
+    // dependency to make retrofit and moshi compatible
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+    // dependency for logging the network status when communicating with the API
+    implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
+
+
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
 
     implementation 'androidx.core:core-ktx:1.7.0'
