@@ -49,6 +49,8 @@ android {
 
 dependencies {
 
+    implementation "androidx.navigation:navigation-compose:2.4.0-beta02"
+
     // Retrofit library for communicating with the API
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     // Moshi converter to turn JSON response from the API to Kotlin object and vice verse
@@ -68,6 +70,7 @@ dependencies {
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
     implementation 'androidx.activity:activity-compose:1.3.1'
+    implementation 'androidx.navigation:navigation-runtime-ktx:2.5.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

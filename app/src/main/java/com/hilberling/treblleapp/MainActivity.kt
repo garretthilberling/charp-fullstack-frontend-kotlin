@@ -10,6 +10,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.hilberling.treblleapp.ui.screens.MainScreen
 import com.hilberling.treblleapp.ui.screens.SignUp
 import com.hilberling.treblleapp.ui.theme.TreblleAppTheme
 
@@ -29,7 +31,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Authentication() {
-    SignUp()
+    val navController = rememberNavController()
+    MainScreen(navHostController = navController)
 }
 
 @Preview(showBackground = true)
