@@ -12,7 +12,7 @@ object Api {
     private val BASE_URL = "https://treblleapp.azurewebsites.net/"
 
     const val API_PATH = "api/"
-
+    // set up moshi object
     private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
     private val logging = HttpLoggingInterceptor()

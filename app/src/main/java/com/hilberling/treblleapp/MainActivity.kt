@@ -54,6 +54,6 @@ fun Authentication(viewModel: MainViewModel) {
 @Composable
 fun DefaultPreview() {
     TreblleAppTheme {
-        Authentication(viewModel = viewModel())
+        Authentication(viewModel())
     }
 }

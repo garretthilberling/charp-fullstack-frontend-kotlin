@@ -89,7 +89,7 @@ fun SignUp(viewModel: MainViewModel) {
             .fillMaxWidth()
             .padding(top = 16.dp),
             horizontalArrangement = Arrangement.Center) {
-            Text(text = "Already have an account?")
+            Text(text = "Already have an account? ")
             Text(text = "Login", fontWeight = FontWeight.Bold)
         }
 
