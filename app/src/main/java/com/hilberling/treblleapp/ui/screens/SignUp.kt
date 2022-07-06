@@ -57,7 +57,7 @@ fun SignUp(viewModel: MainViewModel) {
         )
 
         OutlinedTextField(value = passwordState.value, onValueChange = {
-            emailState.value = it
+            passwordState.value = it
         }, modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 16.dp),
