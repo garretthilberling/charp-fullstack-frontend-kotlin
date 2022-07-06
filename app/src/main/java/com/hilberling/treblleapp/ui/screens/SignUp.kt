@@ -1,4 +1,5 @@
 package com.hilberling.treblleapp.ui.screens
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -6,17 +7,29 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.hilberling.treblleapp.data.RegisterUser
+import com.hilberling.treblleapp.data.Resource
+import com.hilberling.treblleapp.ui.viewmodel.MainViewModel
 
 @Composable
-fun SignUp() {
+fun SignUp(viewModel: MainViewModel) {
+
+    val registerState = viewModel.registerRequestState.collectAsState().value
+
+    val context = LocalContext.current
+
     val toggleState = remember {
         mutableStateOf(false) // means it can be overridden. defaults to false
     }
@@ -63,8 +76,12 @@ fun SignUp() {
             visualTransformation = if(toggleState.value) VisualTransformation.None else
                 PasswordVisualTransformation()
         )
-        // submit button
-        Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
+        // signup button
+        Button(onClick = {
+            val registerUser = RegisterUser(email = emailState.value,
+            password = passwordState.value, password_confirmation = passwordState.value)
+            viewModel.registerUser(registerUser = registerUser)
+        }, modifier = Modifier.fillMaxWidth()) {
            Text(text = "Sign Up", modifier = Modifier.padding(vertical = 8.dp))
         }
         Divider(modifier = Modifier.padding(top = 16.dp))
@@ -75,5 +92,27 @@ fun SignUp() {
             Text(text = "Already have an account?")
             Text(text = "Login", fontWeight = FontWeight.Bold)
         }
+
+        when(registerState) {
+            is Resource.Loading -> {
+                Toast.makeText(context, "Registration in progress", Toast.LENGTH_LONG)
+                    .show()
+            }
+            is Resource.Success -> {
+                Toast.makeText(context, "User successfully registered", Toast.LENGTH_LONG)
+                    .show()
+            }
+            is Resource.Error -> {
+                Toast.makeText(context, "An error has occurred", Toast.LENGTH_LONG)
+                    .show()
+            }
+        }
+
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SignUpPreview() {
+    SignUp(viewModel())
 }
